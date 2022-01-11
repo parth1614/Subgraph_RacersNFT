@@ -1,0 +1,47 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: mumbai
+    source:
+      address: "0x9F1d28ca2DAc666E34326F72A50D6895259CeD00"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ClaimableStatusUpdated
+        - Paused
+        - RewardPaid
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - Staked
+        - Unpaused
+        - Unstaked
+      abis:
+        - name: Contract
+          file: Contract/abis/Contract.json
+      eventHandlers:
+        - event: ClaimableStatusUpdated(bool)
+          handler: handleClaimableStatusUpdated
+        - event: Paused(address)
+          handler: handlePaused
+        - event: RewardPaid(indexed address,uint256)
+          handler: handleRewardPaid
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Staked(address,uint256)
+          handler: handleStaked
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Unstaked(address,uint256)
+          handler: handleUnstaked
+      file: Contract/Contract.wasm
