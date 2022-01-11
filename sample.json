@@ -1,0 +1,8 @@
+{
+  "output": "generated/sample.",
+  "chain": "mumbai",
+  "datasources": [
+    { "address": "0x9F1d28ca2DAc666E34326F72A50D6895259CeD00", "startBlock": 0, "module": [ "erc721" ] }
+  ]
+}
+
